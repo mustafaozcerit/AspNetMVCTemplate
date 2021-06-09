@@ -1,0 +1,36 @@
+﻿@using MvcProje1.Models.Entity
+@model List<TBLMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Mainlayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <p>Aranacak Müşteri Adı:@Html.TextBox("p")</p>
+    <input type="submit" value="ara"/>
+}
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">MÜŞTERİ ID</th>
+            <th scope="col">MÜŞTERİ ADI</th>
+            <th scope="col">MÜŞTERİ SOYAD</th>
+            <th scope="col">KATEGORİ SİL</th>
+            <th scope="col">KATEGORİ GUNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MUSTERIID</td>
+                <td>@item.MUSTERIAD</td>
+                <td>@item.MUSTERISOYAD</td>
+                <td><a herf="/KATEGORI/SIL/@item.MUSTERIID" class="btn btn-danger">SİL</a></td>
+                <td><a herf="/KATEGORI/SIL/@item.MUSTERIID" class="btn btn-success">GUNCELLE</a></td>
+            </tr>
+            }
+    </tbody>
+</table>
+
+
